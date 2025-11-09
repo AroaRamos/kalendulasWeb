@@ -1,0 +1,936 @@
+/********** Template CSS **********/
+:root {
+    /* PALETA KALÉNDULAS */
+    --primary: #6CC4B9;   /* verde agua (botones, enlaces, iconos) */
+    --light: #FFF5F3;     /* fondo clarito pastel */
+    --dark: #314246;      /* texto oscuro elegante */
+    --accent: #F4C9B6;    /* rosita/beige para detalles */
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-weight: 500;
+    transition: .5s;
+}
+
+/* aquí forzamos ya el color del botón principal */
+.btn.btn-primary {
+    color: #FFFFFF;
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+    background-color: #54a99f;
+    border-color: #54a99f;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 50px;
+}
+
+
+/*** Heading ***/
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4,
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+    font-family: 'Lobster Two', cursive;
+    font-weight: 700;
+}
+
+h5,
+h6,
+.h5,
+.h6 {
+    font-weight: 600;
+}
+
+.font-secondary {
+    font-family: 'Lobster Two', cursive;
+}
+
+
+/*** Navbar ***/
+.navbar .navbar-nav .nav-link {
+    padding: 30px 15px;
+    color: var(--dark);
+    font-weight: 500;
+    outline: none;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+.navbar.sticky-top {
+    top: -100px;
+    transition: .5s;
+}
+
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 5px;
+    transition: .5s;
+}
+
+.navbar .dropdown-toggle[aria-expanded=true]::after {
+    transform: rotate(-180deg);
+}
+
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav .nav-link  {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar .navbar-nav {
+        margin-top: 15px;
+        border-top: 1px solid #EEEEEE;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        top: calc(100% - 15px);
+        margin-top: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+        
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+
+/*** Header ***/
+/* las ondas de arriba y abajo */
+/* === Ondas/burbujas arriba y abajo con el MISMO tamaño === */
+:root { --wave-h: 16px; }   /* ajusta 18–26px a tu gusto */
+
+.header-carousel::before,
+.header-carousel::after,
+.page-header::before,
+.page-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--wave-h);
+  z-index: 3;                    /* por encima de la imagen, por debajo de flechas si quieres */
+  background-position: center;
+  background-repeat: repeat-x;
+  background-size: auto var(--wave-h); /* escala la imagen a la altura */
+}
+
+/* Onda superior */
+.header-carousel::before,
+.page-header::before {
+  top: 0;
+  background-image: url("../img/bg-header-top.png");
+}
+
+/* Onda inferior */
+.header-carousel::after,
+.page-header::after {
+  bottom: 0;
+  background-image: url("../img/bg-header-bottom.png");
+}
+
+
+/*
+.header-carousel::before,
+.header-carousel::after,
+.page-header::before,
+.page-header::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 10px;
+    top: 0;
+    left: 0;
+    background: url(../img/bg-header-top.png) center center repeat-x;
+    z-index: 1;
+}
+   
+
+.header-carousel::after,
+.page-header::after {
+    height: 19px;
+    top: auto;
+    bottom: 0;
+    background: url(../img/bg-header-bottom.png) center center repeat-x;
+}
+*/
+
+/* ↓↓↓ AQUI REDUZCO EL ALTO DEL HERO Y MUESTRO UN POCO MÁS ARRIBA ↓↓↓ */
+.header-carousel .owl-carousel-item {
+    position: relative;
+    min-height: 450px;            /* antes estaba más alto */
+}
+.header-carousel .owl-carousel-item img {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    object-position: 50% 50%;     /* 80% = se ve un pelín más de arriba */
+}
+
+@media (max-width: 768px) {
+    .header-carousel .owl-carousel-item {
+        min-height: 300px;        /* en móvil un pelín más alto para que no se corte el texto */
+    }
+    
+    .header-carousel .owl-carousel-item p {
+        font-size: 16px !important;
+        font-weight: 400 !important;
+    }
+
+    .header-carousel .owl-carousel-item h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
+
+.header-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    margin: 7px 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 45px;
+    font-size: 22px;
+    transition: .5s;
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+/* cabeceras de páginas interiores */
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url(../img/carousel-1.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, .5);
+}
+
+
+/*** Facility ***/
+.facility-item .facility-icon {
+    position: relative;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.facility-item .facility-icon::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, .9);
+    transition: .5s;
+    z-index: 1;
+}
+
+.facility-item .facility-icon span {
+    position: absolute;
+    content: "";
+    width: 15px;
+    height: 30px;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+
+.facility-item .facility-icon span:last-child {
+    left: auto;
+    right: 0;
+}
+
+.facility-item .facility-icon i {
+    position: relative;
+    z-index: 2;
+}
+
+.facility-item .facility-text {
+    position: relative;
+    min-height: 250px;
+    padding: 30px;
+    border-radius: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.facility-item .facility-text::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, .9);
+    transition: .5s;
+    z-index: 1;
+}
+
+.facility-item .facility-text * {
+    position: relative;
+    z-index: 2;
+}
+
+.facility-item:hover .facility-icon::before,
+.facility-item:hover .facility-text::before {
+    background: transparent;
+}
+
+.facility-item * {
+    transition: .5s;
+}
+
+.facility-item:hover * {
+    color: #FFFFFF !important;
+}
+
+/*** About ***/
+.about-img img {
+    transition: .5s;
+}
+
+/* efecto hover que ya tenías */
+.about-img img:hover {
+    background: var(--primary) !important;
+}
+
+/* 🔹 ARREGLO para que las fotos redondas no se vean ovaladas */
+.about-img img {
+    aspect-ratio: 1 / 1;     /* fuerza proporción cuadrada */
+    object-fit: cover;       /* recorta sin deformar */
+    width: 100%;
+    height: auto;
+}
+
+
+
+/*** Classes ***/
+.classes-item {
+    transition: .5s;
+}
+
+.classes-item:hover {
+    margin-top: -10px;
+}
+
+
+/*** Team ***/
+.team-item .team-text {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 17px solid var(--light);
+    border-radius: 250px;
+    transition: .5s;
+}
+
+.team-item:hover .team-text {
+    border-color: var(--primary);
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+@media (min-width: 576px) {
+    .testimonial-carousel {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+/* aquí adapto el color del borde al verde kaléndulas (antes era un verde raro) */
+.testimonial-carousel .testimonial-item .border {
+    border: 1px dashed rgba(108, 196, 185, .4) !important;
+}
+
+.testimonial-carousel .owl-nav {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: var(--primary);
+    border-radius: 45px;
+    font-size: 20px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+    background: var(--dark);
+}
+
+/****************************
+ *  FOOTER KALÉNDULAS
+ ***************************/
+
+ /* fondo y color del footer */
+.footer {
+  background-color: var(--dark);      /* tu color oscuro */
+  color: rgba(255,255,255,0.7);
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  margin-top: 0 !important;
+}
+/* botones redes */
+.footer .btn.btn-social {
+  margin-right: 5px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 45px;
+  transition: .3s;
+}
+
+.footer .btn.btn-social:hover {
+    border-color: var(--primary);
+    background: var(--primary);
+}
+
+/* enlaces del footer */
+.footer .btn.btn-link {
+  display: block;
+  margin-bottom: 5px;
+  padding: 0;
+  text-align: left;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: capitalize;
+  color: rgba(255,255,255,.6);
+  transition: .3s;
+}
+.footer .btn.btn-link::before {
+  position: relative;
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 10px;
+}
+.footer .btn.btn-link:hover {
+    color: var(--primary) !important;
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+/* ——— AQUÍ VIENE LO IMPORTANTE ——— */
+
+/* 1) el contenido del footer va centrado y con el mismo ancho que la página */
+.footer .footer-inner,
+.footer .footer-copy {
+  max-width: 1280px;   /* pon aquí el ANCHO de tu página */
+  margin: 0 auto;      /* centra */
+  padding: 0 2rem;     /* margen lateral como en el header */
+}
+/* 2) línea separadora de la parte de copyright */
+.footer .footer-copy {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: 15px;
+}
+/* 3) menú inferior */
+.footer .footer-menu a {
+  margin-right: 15px;
+  padding-right: 15px;
+  border-right: 1px solid rgba(255, 255, 255, .1);
+  color: rgba(255,255,255,.75);
+}
+.footer .footer-menu a:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: none;
+}
+
+.footer .copyright a:hover,
+.footer .footer-menu a:hover {
+    color: var(--primary) !important;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .footer .footer-inner,
+  .footer .footer-copy {
+    padding: 0 1rem;
+  }
+}
+
+/* ====== OVERRIDES FINALES PARA MATAR NARANJAS Y AZUL OSCURO DEL TEMPLATE ====== */
+
+.bg-primary { background-color: var(--primary) !important; }
+.text-primary { color: var(--primary) !important; }
+
+.btn-secondary,
+.btn-dark {
+    background-color: var(--dark) !important;
+    border-color: var(--dark) !important;
+    color: #fff !important;
+}
+
+/* footer a nuestro color oscuro */
+.footer,
+.footer.bg-dark,
+.bg-dark {
+    background-color: var(--dark) !important;
+}
+
+/* suavizar las tarjetitas de categorías para que no sean tan infantiles */
+.facility-item .facility-text {
+  border-radius: 20px;
+  min-height: 180px;
+}
+
+.facility-item .facility-icon {
+  border-radius: 16px;
+  width: 80px;
+  height: 80px;
+}
+
+.facility-item {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.facility-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+}
+
+
+
+/* === TARJETAS KALÉNDULAS – FOTO ARRIBA, TEXTO ABAJO === */
+.kal-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* TARJETA BASE */
+.kal-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 220px;
+  max-width: 250px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(108, 196, 185, 0.12); /* borde pastel más visible */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+}
+
+/* FOTO DE FONDO */
+.kal-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9;
+  z-index: 0;
+}
+
+/* LAVADO BLANCO PARA QUE SE LEA EL TEXTO */
+.kal-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.35) 0%,
+    rgba(255,255,255,0.55) 60%,
+    rgba(255,255,255,0.95) 100%
+  );
+  z-index: 1;
+}
+
+/* PARTE SUPERIOR (ICONO SOBRE FOTO) */
+.kal-top {
+  position: relative;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+/* ICONO – efecto vidrio */
+.kal-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px);
+  padding: 6px;
+  object-fit: contain;
+  transition: transform .35s ease;
+}
+
+/* ZONA DE TEXTO (DEBAJO DE LA FOTO) */
+.kal-info {
+  position: relative;
+  z-index: 4;
+  background: rgba(255,255,255,0.98);
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.03);
+}
+
+/* TÍTULO */
+.kal-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: #314246;
+  margin-bottom: .35rem;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.9);
+}
+
+/* DESCRIPCIÓN */
+.kal-text {
+  font-size: .8rem;
+  color: rgba(49,66,70,.7);
+  margin-bottom: 0;
+}
+
+/* ========================= */
+/*   FONDOS POR CATEGORÍA    */
+/* ========================= */
+
+.kal-bebes::before {
+  background-image: url("../img/cat-bebes.jpg");
+  background-color: #f3eaff;
+}
+.kal-eventos::before {
+  background-image: url("../img/cat-eventos.jpg");
+  background-color: #ffe8e2;
+}
+.kal-mascotas::before {
+  background-image: url("../img/cat-mascotas.jpg");
+  background-color: #fff3e3; /* fondo anaranjado pastel */
+}
+.kal-profes::before {
+  background-image: url("../img/cat-profe.jpg");
+  background-color: #e8f5f3;
+}
+
+/* ========================= */
+/*   COLORES POR CATEGORÍA   */
+/* ========================= */
+
+/* BEBÉS – lavanda */
+.kal-bebes .kal-icon {
+  background: rgba(180, 153, 216, 0.25);
+  border: 1px solid rgba(180, 153, 216, 0.3);
+}
+.kal-bebes .kal-title {
+  color: #b499d8;
+}
+
+/* EVENTOS – rosita */
+.kal-eventos .kal-icon {
+  background: rgba(246, 165, 163, 0.25);
+  border: 1px solid rgba(246, 165, 163, 0.3);
+}
+.kal-eventos .kal-title {
+  color: #f6a5a3;
+}
+
+/* MASCOTAS – naranja pastel */
+.kal-mascotas .kal-icon {
+  background: rgba(244, 178, 122, 0.25);   /* fondo cálido */
+  border: 1px solid rgba(244, 178, 122, 0.35);
+}
+.kal-mascotas .kal-title {
+  color: #f4b27a;
+}
+
+/* PROFES / EMPRESA – turquesa Kaléndulas */
+.kal-profes .kal-icon {
+  background: rgba(108, 196, 185, 0.25);
+  border: 1px solid rgba(108, 196, 185, 0.3);
+}
+.kal-profes .kal-title {
+  color: #6cc4b9;
+}
+
+/* HOVER */
+.kal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+}
+.kal-card:hover .kal-icon {
+  transform: translateY(-5px) rotate(-5deg);
+}
+
+/* BLUR DE LAS NO HOVER (solo escritorio) */
+.kal-cards:hover .kal-card:not(:hover) {
+  filter: blur(3px) brightness(0.9);
+  transform: scale(.97);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .kal-card {
+    width: 100%;
+    max-width: 100%;
+  }
+  .kal-cards:hover .kal-card:not(:hover) {
+    filter: none;
+    transform: none;
+  }
+}
+
+
+/* ===== Ajuste general para que ocupe todo el ancho ===== */
+
+/* ===== LAYOUT HÍBRIDO ===== */
+
+/* fondo pastel suave */
+body {
+  margin: 0;
+  background: #fff5f3;
+  overflow-x: hidden;
+}
+
+/* header ancho completo */
+.header-carousel,
+.container-fluid {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0;
+}
+
+/* resto del contenido centrado */
+.container,
+.container-xxl {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+
+/* en pantallas muy grandes */
+@media (min-width: 1500px) {
+  .container {
+    max-width: 1380px;
+  }
+}
+
+
+/* ====== TARJETAS DE PRODUCTO KALÉNDULAS ====== */
+.kal-prod-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+  border: 1px solid rgba(108,196,185,0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.kal-prod-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.08);
+}
+
+.kal-prod-img {
+  position: relative;
+  width: 100%;
+  padding-top: 62%;              /* proporción 16:10 sin fijar altura */
+  background: #fef7f4;           /* tu fondo rosita */
+  overflow: hidden;
+}
+
+.kal-prod-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* pegatina de precio */
+.kal-price {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #59b4aa;           /* turquesa Kaléndulas */
+  color: #fff;
+  font-weight: 600;
+  font-size: .85rem;
+  padding: .45rem .8rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(89,180,170,.45);
+}
+
+.kal-prod-body {
+  padding: 1.1rem 1.2rem 1.25rem;
+  text-align: left;
+}
+
+.kal-prod-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: .35rem;
+  color: #264047;
+}
+
+.kal-prod-text {
+  font-size: .82rem;
+  color: rgba(38,64,71,.6);
+  margin-bottom: .75rem;
+}
+
+/* botoncito */
+.kal-prod-btn {
+  background: #59b4aa;
+  border: none;
+  color: #fff;
+  font-size: .8rem;
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  transition: opacity .25s ease;
+}
+
+.kal-prod-btn:hover {
+  opacity: .85;
+  cursor: pointer;
+}
+
+
